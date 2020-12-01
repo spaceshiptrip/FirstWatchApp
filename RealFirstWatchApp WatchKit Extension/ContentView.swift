@@ -10,28 +10,31 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var showDetails = false
+    @State private var locationManager = LocationManager()
+    @State private var placeText = "No Place"
+    @State private var latLonText = "No LatLon"
 
     var body: some View {
         VStack {
             Button(action: {
-//                locationManager.getPlace() { text in
-//                    placeText = text
-//                    print(text)
-//                }
-//
-//                locationManager.getLatLon() { text in
-//                    latLonText = text
-//                    print(text)
-//                }
+                locationManager.getPlace() { text in
+                    placeText = text
+                    print(text)
+                }
+
+                locationManager.getLatLon() { text in
+                    latLonText = text
+                    print(text)
+                }
                 self.showDetails.toggle()
             }) {
                 Text ("Show Details")
             }
             
-//            Text (placeText)
-//                .padding()
-//            Text (latLonText)
-//                .padding()
+            Text (placeText)
+                .padding()
+            Text (latLonText)
+                .padding()
 
             if showDetails {
                 Text("Hellow, world!!! Yabba dabba dooo!")
